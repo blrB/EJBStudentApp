@@ -19,9 +19,6 @@ public class StudentGroup {
     @Column(nullable = false, unique = true)
     private String name;
 
-//    @OneToMany(mappedBy = "studentGroup", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Student> students = new ArrayList<Student>();
-
     public StudentGroup() {
     }
 
@@ -44,14 +41,6 @@ public class StudentGroup {
     public void setName(String name) {
         this.name = name;
     }
-
-//    public List<Student> getStudents() {
-//        return students;
-//    }
-//
-//    public void setStudents(List<Student> students) {
-//        this.students = students;
-//    }
 
     @Override
     public String toString() {

@@ -33,7 +33,7 @@ public class StudentGroupRestController {
     @GET
     @Path("name/{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public StudentGroup doGetByID(@PathParam("name") String name) {
+    public StudentGroup doGetByName(@PathParam("name") String name) {
 
         return studentGroupService.get(name);
     }
