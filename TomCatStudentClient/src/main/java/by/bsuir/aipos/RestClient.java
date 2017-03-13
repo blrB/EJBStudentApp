@@ -2,7 +2,6 @@ package by.bsuir.aipos;
 
 import by.bsuir.aipos.model.Student;
 import by.bsuir.aipos.model.StudentGroup;
-import by.bsuir.aipos.servlet.StudentLogger;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +15,6 @@ import java.util.List;
 public class RestClient {
 
     private Client client;
-    private String serverRest = "http://localhost:8080/rest";
 
     public RestClient(){
         client = ClientBuilder.newClient();
@@ -31,9 +29,9 @@ public class RestClient {
         ObjectMapper mapper = new ObjectMapper();
         try {
             String jsonInString = mapper.writeValueAsString(student);
-            WebTarget webTarget = client.target(serverRest + "/student/save");
-            Invocation.Builder builder = webTarget.request();
-            builder.post(Entity.json(jsonInString));
+            client.target(PropertyUtils.getUrlStudentSave())
+                    .request()
+                    .post(Entity.json(jsonInString));
         } catch (JsonProcessingException e) {
             StudentLogger.getLogger().trace(e);
         }
@@ -48,7 +46,7 @@ public class RestClient {
     public Student getStudent(long id) {
         Student student = new Student();
         try {
-            String jsonStudent = client.target(serverRest + "/student/" + id)
+            String jsonStudent = client.target(PropertyUtils.getUrlStudentGet() + id)
                     .request(MediaType.APPLICATION_JSON)
                     .get(String.class);
             StudentLogger.getLogger().info("Get json(Student " + id + ") from server : " + jsonStudent);
@@ -64,7 +62,7 @@ public class RestClient {
      * Delete student
      */
     public void deleteStudent(long id){
-        client.target(serverRest + "/student/" + id)
+        client.target(PropertyUtils.getUrlStudentDelete() + id)
                 .request().accept(MediaType.TEXT_PLAIN).method("DELETE");
         StudentLogger.getLogger().info("Delete student id : " + id);
     }
@@ -77,7 +75,7 @@ public class RestClient {
     public List<Student> getStudents(){
         List<Student> students = new ArrayList<>();
         try {
-            String jsonStudents = client.target(serverRest + "/student/all")
+            String jsonStudents = client.target(PropertyUtils.getUrlStudentsAll())
                     .request(MediaType.APPLICATION_JSON)
                     .get(String.class);
             StudentLogger.getLogger().info("Get json(All Student) from server : " + jsonStudents);
@@ -97,7 +95,7 @@ public class RestClient {
     public StudentGroup getStudentGroup(String name) {
         StudentGroup studentGroup = new StudentGroup();
         try {
-            String jsonStudent = client.target(serverRest + "/student-group/name/" + name)
+            String jsonStudent = client.target(PropertyUtils.getUrlStudentGroupName() + name)
                     .request(MediaType.APPLICATION_JSON)
                     .get(String.class);
             StudentLogger.getLogger().info("Get json(Student group " + name + " from server : " + jsonStudent);
@@ -118,7 +116,7 @@ public class RestClient {
     public List<StudentGroup> getStudentGroups(){
         List<StudentGroup> studentGroups = new ArrayList<>();
         try {
-            String jsonStudents = client.target(serverRest + "/student-group/all")
+            String jsonStudents = client.target(PropertyUtils.getUrlStudentGroupsAll())
                     .request(MediaType.APPLICATION_JSON)
                     .get(String.class);
             StudentLogger.getLogger().info("Get json(All Student Group) from server : " + jsonStudents);

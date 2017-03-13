@@ -1,6 +1,7 @@
 package by.bsuir.aipos.servlet;
 
 import by.bsuir.aipos.RestClient;
+import by.bsuir.aipos.StudentLogger;
 import by.bsuir.aipos.model.Student;
 import by.bsuir.aipos.model.StudentGroup;
 

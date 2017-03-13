@@ -29,12 +29,13 @@ public class StudentUtilsTest {
     private StudentUtils studentUtils;
     private Student student;
     private StudentGroup studentGroup;
+    private Date date;
 
     @Before
     public void init() throws Exception {
         String dateString = "1996-12-05";
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = format.parse(dateString);
+        date = format.parse(dateString);
         studentGroup = new StudentGroup("421702");
         studentGroup.setId(1);
         student = new Student(
@@ -45,7 +46,7 @@ public class StudentUtilsTest {
                 "Bobrujsk",
                 studentGroup);
         student.setId(1);
-        RestClient client = mock(RestClient.class);
+        RestClient client = PowerMockito.mock(RestClient.class);
         PowerMockito.whenNew(RestClient.class).withNoArguments()
                 .thenReturn(client);
         when(client.getStudentGroup(anyString())).thenReturn(studentGroup);
@@ -73,6 +74,71 @@ public class StudentUtilsTest {
                 student.getHomeAddress().equals("Bobrujsk") &&
                 student.getStudentGroup().getName().equals("421702")
         );
+    }
+
+    @Test
+    public void validStudent() {
+        assert (studentUtils.validStudent(student));
+    }
+
+    @Test
+    public void notValidStudentData() {
+        Student student = new Student(
+                "Andrey",
+                "Bobkov",
+                "Valerievich",
+                null,
+                "Bobrujsk",
+                studentGroup);
+        assert (!studentUtils.validStudent(student));
+    }
+
+    @Test
+    public void notValidStudentFirstName() {
+        Student student = new Student(
+                "",
+                "Bobkov",
+                "Valerievich",
+                date,
+                "Bobrujsk",
+                studentGroup);
+        assert (!studentUtils.validStudent(student));
+    }
+
+    @Test
+    public void notValidStudentLastName() {
+        Student student = new Student(
+                "Andrey",
+                "",
+                "Valerievich",
+                date,
+                "Bobrujsk",
+                studentGroup);
+        assert (!studentUtils.validStudent(student));
+    }
+
+    @Test
+    public void notValidStudentHomeAddress() {
+        Student student = new Student(
+                "Andrey",
+                "Bobkov",
+                "Valerievich",
+                date,
+                "",
+                studentGroup);
+        assert (!studentUtils.validStudent(student));
+    }
+
+    @Test
+    public void notValidStudentGroup() {
+        Student student = new Student(
+                "Andrey",
+                "Bobkov",
+                "Valerievich",
+                date,
+                "Bobrujsk",
+                null);
+        assert (!studentUtils.validStudent(student));
     }
 
 }

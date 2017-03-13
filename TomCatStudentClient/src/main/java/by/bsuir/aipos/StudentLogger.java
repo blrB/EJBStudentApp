@@ -1,4 +1,4 @@
-package by.bsuir.aipos.servlet;
+package by.bsuir.aipos;
 
 import org.apache.log4j.Logger;
 

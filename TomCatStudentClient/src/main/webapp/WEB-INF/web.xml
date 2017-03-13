@@ -4,4 +4,40 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
+    <context-param>
+        <param-name>server-url</param-name>
+        <param-value>http://localhost:8080</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>rest-student-save</param-name>
+        <param-value>/rest/student/save</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>rest-student-get</param-name>
+        <param-value>/rest/student/</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>rest-student-delete</param-name>
+        <param-value>/rest/student/</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>rest-students-all</param-name>
+        <param-value>/rest/student/all</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>rest-student-group-name</param-name>
+        <param-value>/rest/student-group/name/</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>rest-students-group-all</param-name>
+        <param-value>/rest/student-group/all</param-value>
+    </context-param>
+
 </web-app>
