@@ -19,7 +19,7 @@ public class PropertyUtils {
         FileInputStream fis;
         Properties property = new Properties();
         try {
-            fis = new FileInputStream("src/main/resources/config.properties");
+            fis = new FileInputStream("config.properties");
             property.load(fis);
             String serverURL = property.getProperty("server-url");
             StudentLogger.getLogger().info("Server URL : " + serverURL);
