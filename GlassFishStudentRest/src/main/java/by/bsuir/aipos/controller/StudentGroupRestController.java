@@ -15,7 +15,6 @@ public class StudentGroupRestController {
     private StudentGroupService studentGroupService;
 
     @POST
-    @Path("save")
     @Consumes(MediaType.APPLICATION_JSON)
     public void doSave(StudentGroup studentGroup) {
 
@@ -46,7 +45,6 @@ public class StudentGroupRestController {
     }
 
     @GET
-    @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<StudentGroup> doGetAll() {
 

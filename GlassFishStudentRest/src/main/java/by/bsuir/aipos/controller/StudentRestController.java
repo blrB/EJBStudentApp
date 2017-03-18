@@ -15,7 +15,6 @@ public class StudentRestController {
     private StudentService studentService;
 
     @POST
-    @Path("save")
     @Consumes(MediaType.APPLICATION_JSON)
     public void doSave(Student student) {
 
@@ -34,11 +33,12 @@ public class StudentRestController {
     @Path("{id}")
     public void doDeleteByID(@PathParam("id") Long id){
 
-        studentService.delete(id);
+        if (studentService.get(id) != null) {
+            studentService.delete(id);
+        }
     }
 
     @GET
-    @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Student> doGetAll() {
 
