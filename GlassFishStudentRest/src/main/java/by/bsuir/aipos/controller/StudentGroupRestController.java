@@ -41,7 +41,9 @@ public class StudentGroupRestController {
     @Path("{id}")
     public void doDeleteByID(@PathParam("id") Long id){
 
-        studentGroupService.delete(id);
+        if (studentGroupService.get(id) != null) {
+            studentGroupService.delete(id);
+        }
     }
 
     @GET
