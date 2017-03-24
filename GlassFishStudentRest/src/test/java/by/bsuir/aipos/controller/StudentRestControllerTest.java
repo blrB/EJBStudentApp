@@ -36,7 +36,7 @@ public class StudentRestControllerTest {
     @Test
     public void doDeleteByID() throws Exception {
         studentRestController.doDeleteByID(anyLong());
-        verify(studentService).delete(anyLong());
+        verify(studentService).get(anyLong());
     }
 
     @Test

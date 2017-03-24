@@ -42,7 +42,7 @@ public class StudentGroupRestControllerTest {
     @Test
     public void doDeleteByID() throws Exception {
         studentGroupRestController.doDeleteByID(anyLong());
-        verify(studentGroupService).delete(anyLong());
+        verify(studentGroupService).get(anyLong());
     }
 
     @Test
