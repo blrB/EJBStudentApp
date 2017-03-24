@@ -17,6 +17,6 @@ $ ./asadmin deploy  --contextroot "/" '<pach_for_war> GlassFishStudentRest-1.0-S
 
 $ cd <folder_glassfish4/bin>
 $ ./asadmin undeploy GlassFishStudentRest-1.0-SNAPSHOT   
-$ ./asadmin start-domain domain1
+$ ./asadmin stop-domain domain1
 
 ```
