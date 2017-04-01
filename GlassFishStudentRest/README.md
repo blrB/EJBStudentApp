@@ -1,6 +1,6 @@
-##GlassFish Rest Student Server
+# GlassFish Rest Student Server
 
-#Start server and deploy
+## Start server and deploy
 
 ```sh
 
@@ -11,7 +11,7 @@ $ ./asadmin start-domain domain1
 $ ./asadmin deploy  --contextroot "/" '<pach_for_war> GlassFishStudentRest-1.0-SNAPSHOT.war'
 
 ```
-#Undeploy and stop server
+## Undeploy and stop server
 
 ```sh
 

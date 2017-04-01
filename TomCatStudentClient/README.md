@@ -1,6 +1,18 @@
-##TomCat Student Client
+# TomCat Student Client for REST Server
 
-#Start server and deploy
+<p align="center">
+  <img src="https://raw.githubusercontent.com/blrB/EJBStudentApp/master/TomCatStudentClient/img.png" alt="table"/>
+</p>
+
+## Client:
+
+Servlets
+
+JSP
+
+log4j
+
+## Start server and deploy
 
 ```sh
 
